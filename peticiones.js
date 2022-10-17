@@ -11,10 +11,23 @@ fetch('https://pokeapi.co/api/v2/pokemon/132/')
 
 //añadir al package.json "type": "module", */
 
-const axios = require('axios')
+/* const axios = require('axios')
 
 axios.get("http://localhost:3000/api/movies")
 .then(response => {
     console.log(response.data);
 })
-.catch(error => console.log(error))
+.catch(error => console.log(error)) */
+
+let marcas = ['CocaCola','Pepsi','Manaos','La Vichi Ahora','Naranpol','Kitchening Bar','Havana','Smirnoff','brugal','Quilmes','Andes','INCA','Salta Cautiva','Cunnington','Corona']
+
+marcas = marcas.map(marca => {
+  let elemento = {
+    nombre : marca,
+    createdAt: new Date,
+    updatedAt: new Date
+  }
+  return elemento
+})
+
+console.log(marcas);
