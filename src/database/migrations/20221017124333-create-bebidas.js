@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       litrosDimensionales: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       marea: {
         type: Sequelize.TINYINT
@@ -25,6 +25,9 @@ module.exports = {
       },
       dieta: {
         type: Sequelize.TINYINT
+      },
+      imagen:{
+        type: Sequelize.STRING
       },
       marcaId: {
         type: Sequelize.INTEGER,

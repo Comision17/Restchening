@@ -27,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     marea: DataTypes.TINYINT,
     conGas: DataTypes.TINYINT,
     dieta: DataTypes.TINYINT,
+    imagen:DataTypes.STRING,
     marcaId: DataTypes.INTEGER
   }, {
     sequelize,

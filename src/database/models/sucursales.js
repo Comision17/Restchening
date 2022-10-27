@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     codigoPostal: DataTypes.INTEGER,
     email: DataTypes.STRING,
     encargados: DataTypes.STRING,
-    horario: DataTypes.DATE
+    horario: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Sucursales',

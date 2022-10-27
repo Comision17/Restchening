@@ -18,10 +18,13 @@ module.exports = {
         type: Sequelize.STRING
       },
       celiaco: {
-        type: Sequelize.STRING
+        type: Sequelize.TINYINT
       },
       veg: {
         type: Sequelize.TINYINT
+      },
+      imagen:{
+        type: Sequelize.STRING
       },
       categoriaId: {
         type: Sequelize.INTEGER,

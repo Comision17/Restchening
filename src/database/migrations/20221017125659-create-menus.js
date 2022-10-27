@@ -57,6 +57,16 @@ module.exports = {
           key: 'id'
         }, 
       },
+      platosId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: {
+            tableName: 'Platos'
+          },
+          key: 'id'
+        }, 
+      },
       categoriaId: {
         type: Sequelize.INTEGER,
         allowNull: false,

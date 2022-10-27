@@ -1,19 +1,6 @@
 'use strict';
 
-/* Usuarios.init {
-    nombre: DataTypes.STRING,
-    apellido: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    telefono: DataTypes.STRING,
-    tarjeta: DataTypes.STRING,
-    dni: DataTypes.STRING,
-    localidad: DataTypes.STRING,
-    provincia: DataTypes.STRING,
-    perfil: DataTypes.STRING,
-    Rol: DataTypes.STRING
-  } */
-  let usuarios = {
+  let usuarios = [{
     nombre: 'Cristian',
     apellido: 'Elias',
     email: 'cris@gmail.com',
@@ -27,7 +14,7 @@
     Rol: 'Administrador',
     createdAt: new Date,
     updatedAt: new Date
-  }
+  }]
 
 module.exports = {
   async up (queryInterface, Sequelize) {

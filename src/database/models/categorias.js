@@ -26,6 +26,10 @@ module.exports = (sequelize, DataTypes) => {
         as: 'postre',
         foreignKey: 'categoriaId'
       })
+      Categorias.hasMany(models.Platos,{
+        as: 'platos',
+        foreignKey: 'categoriaId'
+      })
     }
   }
   Categorias.init({

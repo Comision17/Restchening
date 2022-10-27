@@ -19,7 +19,7 @@ axios.get("http://localhost:3000/api/movies")
 })
 .catch(error => console.log(error)) */
 
-let marcas = ['CocaCola','Pepsi','Manaos','La Vichi Ahora','Naranpol','Kitchening Bar','Havana','Smirnoff','brugal','Quilmes','Andes','INCA','Salta Cautiva','Cunnington','Corona']
+/* let marcas = ['CocaCola','Pepsi','Manaos','La Vichi Ahora','Naranpol','Kitchening Bar','Havana','Smirnoff','brugal','Quilmes','Andes','INCA','Salta Cautiva','Cunnington','Corona']
 
 marcas = marcas.map(marca => {
   let elemento = {
@@ -30,4 +30,8 @@ marcas = marcas.map(marca => {
   return elemento
 })
 
-console.log(marcas);
+console.log(marcas); */
+
+let boolean = true
+
+console.log(Number(boolean));

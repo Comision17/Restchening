@@ -6,7 +6,7 @@ let {crear,productoUnico, listar, editar, eliminar} = require('../controllers/pr
 
 /* Productos */
 router.get('/', listar);
-router.get('/:id', productoUnico);
+router.get('/detalle', productoUnico);
 
 router.post('/admin/crear', crear);
 router.put('/admin/editar/:id', editar);

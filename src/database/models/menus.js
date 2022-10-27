@@ -22,11 +22,15 @@ module.exports = (sequelize, DataTypes) => {
         as: 'bebidas',
         foreignKey: 'bebidasId'
       })
+      Menus.belongsTo(models.Platos,{
+        as: 'platos',
+        foreignKey: 'platosId'
+      })
       Menus.belongsTo(models.Postres,{
         as: 'postres',
         foreignKey: 'postresId'
       })
-      Menus.belongsTo(models.categoria,{
+      Menus.belongsTo(models.Categorias,{
         as: 'categoria',
         foreignKey: 'categoriaId'
       })
@@ -40,6 +44,7 @@ module.exports = (sequelize, DataTypes) => {
     bebidasId: DataTypes.INTEGER,
     guarnicionesId: DataTypes.INTEGER,
     postresId: DataTypes.INTEGER,
+    platosId:DataTypes.INTEGER,
     categoriaId: DataTypes.INTEGER
   }, {
     sequelize,

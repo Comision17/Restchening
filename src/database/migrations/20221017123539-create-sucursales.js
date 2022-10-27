@@ -30,7 +30,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       horario: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

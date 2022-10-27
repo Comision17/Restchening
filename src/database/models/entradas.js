@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     descripcion: DataTypes.STRING,
     celiaco: DataTypes.STRING,
     veg: DataTypes.TINYINT,
+    imagen:DataTypes.STRING,
     categoriaId: DataTypes.INTEGER
   }, {
     sequelize,

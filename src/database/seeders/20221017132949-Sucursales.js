@@ -1,5 +1,3 @@
-'use strict';
-
 let sucursalesNombre = [
   {
     nombre : 'LA POSTA',
@@ -22,29 +20,22 @@ let sucursalesNombre = [
   }
 ]
 
-/* nombre: DataTypes.STRING,
-    direccion: DataTypes.STRING,
-    localidad: DataTypes.STRING,
-    contacto: DataTypes.STRING,
-    codigoPostal: DataTypes.INTEGER,
-    email: DataTypes.STRING,
-    encargados: DataTypes.STRING,
-    horario: DataTypes.DATE */
-
     let sucursales = sucursalesNombre.map(sucursal => {
-      let e = {
+      let elemento = {
         nombre: sucursal.nombre,
-        direccion,
-        localidad,
-        contacto,
-        codigoPostal,
-        email,
-        encargados,
-        horario,
-        createdAt:new Date,
-        updatedAt:new Date
+        direccion: 'Calle falsa al 123',
+        localidad: sucursal.localidad,
+        contacto: sucursal.contacto,
+        codigoPostal: sucursal.codigoPostal,
+        email: 'emailFalso@gmail.com',
+        encargados: sucursal.encargados,
+        horario: '10am - 12pm',
+        createdAt: new Date,
+        updatedAt: new Date
       }
+      return elemento
     })
+
 module.exports = {
   async up (queryInterface, Sequelize) {
      await queryInterface.bulkInsert('Sucursales', sucursales, {});

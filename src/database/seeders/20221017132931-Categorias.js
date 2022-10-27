@@ -36,6 +36,11 @@ let categorias = [
     createdAt:new Date,
     updatedAt:new Date
   },
+  {
+    nombre: 'Ensaladas',
+    createdAt:new Date,
+    updatedAt:new Date
+  }
 ]
 
 module.exports = {
