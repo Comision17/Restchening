@@ -31,9 +31,76 @@ module.exports = {
             })
             .catch(err => res.status(500).json(err))
     },
+
+    
+    productoPorId: (req, res) => {
+        let idParams = req.params.id
+        let variedad = req.query.variedad
+        let array = []
+        if (variedad === 'bebidas') {
+            array.push(
+                db.Bebidas.findOne({
+                    where: {
+                        id: idParams
+                    }
+                })
+            )
+        } else if (variedad === 'entradas') {
+            array.push(
+                db.Entradas.findOne({
+                    where: {
+                        id: idParams
+                    }
+                })
+            )
+        } else if (variedad === 'guarniciones') {
+            array.push(
+                db.Guarniciones.findOne({
+                    where: {
+                        id: idParams
+                    }
+                })
+            )
+        } else if (variedad === 'platos') {
+            array.push(
+                db.Platos.findOne({
+                    where: {
+                        id: idParams
+                    }
+                })
+            )
+        } else if (variedad === 'postres') {
+            array.push(
+                db.Postres.findOne({
+                    where: {
+                        id: idParams
+                    }
+                })
+            )
+        } else {
+            array.push("No se encontro lo que buscabas, recuerde añadir una categoria en la query")
+        }
+        Promise.all(array)
+            .then(array => {
+                let response = {
+                    status: 200,
+                    meta: {
+                        length: array.length,
+                        path: `${req.protocol}://${req.get('host')}${req.originalUrl}`
+                    },
+                    data: array
+                }
+                return res.status(200).json(response)
+            })
+            .catch(err => res.status(500).json(err))
+    },
     productoUnico: (req, res) => {
         let bebidas = db.Bebidas.findOne({
-            where: { nombre: { [Op.substring]: req.query.nombre } }
+            where: {
+                    nombre: {
+                        [Op.substring]: req.query.nombre 
+                    } 
+            }
         })
         let entradas = db.Entradas.findOne({
             where: { nombre: { [Op.substring]: req.query.nombre } }
@@ -80,8 +147,7 @@ module.exports = {
     },
     crear: (req, res) => {
         let promise = []
-        console.log(req.body);
-        if (req.body.variedad === 'bebida') {
+        if (req.query.variedad === 'bebida') {
             promise.push(
                 db.Bebidas.create({
                     nombre: req.body.nombre,
@@ -95,7 +161,7 @@ module.exports = {
                     updatedAt: new Date
                 })
             )
-        } else if (req.body.variedad === 'entrada') {
+        } else if (req.query.variedad === 'entrada') {
             promise.push(
                 db.Entradas.create({
                     nombre: req.body.nombre,
@@ -108,7 +174,7 @@ module.exports = {
                     updatedAt: new Date
                 })
             )
-        } else if (req.body.variedad === 'guarnicion') {
+        } else if (req.query.variedad === 'guarnicion') {
             promise.push(
                 db.Guarniciones.create({
                     nombre: req.body.nombre,
@@ -136,7 +202,7 @@ module.exports = {
                     updatedAt: new Date
                 })
             )
-        } else if (req.body.variedad === 'postre') {
+        } else if (req.query.variedad === 'postre') {
             promise.push(
                 db.Postres.create({
                     nombre: req.body.nombre,
@@ -170,12 +236,12 @@ module.exports = {
         let promise = []
         console.log(req.body);
         let idParams = req.params.id
-        if (req.query.variedad === 'bebida') {
+        if (req.query.variedad === 'bebidas') {
             promise.push(
                 db.Bebidas.update({
                     nombre: req.body.nombre,
                     precio: +req.body.precio,
-                    litrosDimensionales: +req.body.litros,
+                    litrosDimensionales: +req.body.litrosDimensionales,
                     marea: +req.body.marea,
                     conGas: +req.body.gas,
                     dieta: +req.body.dieta,
@@ -205,7 +271,7 @@ module.exports = {
                     }
                 })
             )
-        } else if (req.query.variedad === 'guarnicion') {
+        } else if (req.query.variedad === 'guarniciones') {
             promise.push(
                 db.Guarniciones.update({
                     nombre: req.body.nombre,
@@ -223,7 +289,7 @@ module.exports = {
                     }
                 })
             )
-        } else if (req.query.variedad === 'plato') {
+        } else if (req.query.variedad === 'platos') {
             promise.push(
                 db.Platos.update({
                     nombre: req.body.nombre,
@@ -241,7 +307,7 @@ module.exports = {
                     }
                 })
             )
-        } else if (req.query.variedad === 'postre') {
+        } else if (req.query.variedad === 'postres') {
             promise.push(
                 db.Postres.update({
                     nombre: req.body.nombre,
@@ -277,7 +343,7 @@ module.exports = {
     eliminar: (req, res) => {
         let promise = []
         let idParams = req.params.id
-        if (req.query.variedad === 'bebida') {
+        if (req.query.categoria === 'bebidas') {
             promise.push(
                 db.Bebidas.destroy({
                     where : {
@@ -285,7 +351,7 @@ module.exports = {
                     }
                 })
             )
-        } else if (req.query.variedad === 'entrada') {
+        } else if (req.query.categoria === 'entradas') {
             promise.push(
                 db.Entradas.destroy({
                     where : {
@@ -293,7 +359,7 @@ module.exports = {
                     }
                 })
             )
-        } else if (req.query.variedad === 'guarnicion') {
+        } else if (req.query.categoria === 'guarniciones') {
             promise.push(
                 db.Guarniciones.destroy({
                     where : {
@@ -301,7 +367,7 @@ module.exports = {
                     }
                 })
             )
-        } else if (req.query.variedad === 'plato') {
+        } else if (req.query.categoria === 'platos') {
             promise.push(
                 db.Platos.destroy({
                     where : {
@@ -309,7 +375,7 @@ module.exports = {
                     }
                 })
             )
-        } else if (req.query.variedad === 'postre') {
+        } else if (req.query.categoria === 'postres') {
             promise.push(
                 db.Postres.destroy({
                     where : {
@@ -318,7 +384,7 @@ module.exports = {
                 })
             )
         } else {
-            promise.push("No se encontro lo que buscabas, recuerde añadir una variedad en la query")
+            promise.push("No se encontro lo que buscabas, recuerde añadir una categoria en la query")
         }
         Promise.all(promise)
         .then(promise => {

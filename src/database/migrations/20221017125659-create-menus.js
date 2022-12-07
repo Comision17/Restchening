@@ -8,14 +8,8 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      nombre: {
-        type: Sequelize.STRING
-      },
       precio: {
         type: Sequelize.INTEGER
-      },
-      descripcion: {
-        type: Sequelize.STRING
       },
       entradasId: {
         type: Sequelize.INTEGER,
@@ -33,16 +27,6 @@ module.exports = {
         references: {
           model: {
             tableName: 'Bebidas'
-          },
-          key: 'id'
-        }, 
-      },
-      guarnicionesId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: {
-            tableName: 'Guarniciones'
           },
           key: 'id'
         }, 
